@@ -44634,6 +44634,11 @@ are still necessary, though: 'GTY(())'.  Markers can appear:
  The parser understands simple typedefs such as 'typedef struct TAG
 *NAME;' and 'typedef int NAME;'.  These don't need to be marked.
 
+ However, in combination with GTY, avoid using typedefs such as 'typedef
+int_hash<...> NAME;' for these generate infinite-recursion code.  See
+PR103157 (https://gcc.gnu.org/PR103157).  Instead, you may use 'struct
+NAME : int_hash<...> {};', for example.
+
  Since 'gengtype''s understanding of C++ is limited, there are several
 constructs and declarations that are not supported inside
 classes/structures marked for automatic GC code generation.  The
@@ -58400,48 +58405,48 @@ Node: Host Fragment1940463
 Node: Collect21940703
 Node: Header Dirs1943339
 Node: Type Information1944762
-Node: GTY Options1948038
-Node: Inheritance and GTY1959297
-Ref: Inheritance and GTY-Footnote-11960862
-Node: User GC1961132
-Node: GGC Roots1964871
-Node: Files1965584
-Node: Invoking the garbage collector1968212
-Node: Troubleshooting1969854
-Node: Plugins1970929
-Node: Plugins loading1972058
-Node: Plugin API1973157
-Node: Plugins pass1981024
-Node: Plugins GC1982995
-Node: Plugins description1984712
-Node: Plugins attr1985248
-Node: Plugins recording1987528
-Node: Plugins gate1988378
-Node: Plugins tracking1988969
-Node: Plugins building1989557
-Node: LTO1993058
-Node: LTO Overview1993930
-Node: LTO object file layout1999682
-Node: IPA2004312
-Node: WHOPR2013362
-Node: Internal flags2017922
-Node: Match and Simplify2019333
-Node: GIMPLE API2020295
-Node: The Language2023090
-Node: Static Analyzer2035589
-Node: Analyzer Internals2035854
-Node: Debugging the Analyzer2051741
-Node: User Experience Guidelines2054661
-Node: Guidelines for Diagnostics2055597
-Ref: input_location_example2063772
-Node: Guidelines for Options2073457
-Node: Funding2073634
-Node: GNU Project2076141
-Node: Copying2076790
-Node: GNU Free Documentation License2114301
-Node: Contributors2139422
-Node: Option Index2180398
-Node: Concept Index2181275
+Node: GTY Options1948293
+Node: Inheritance and GTY1959552
+Ref: Inheritance and GTY-Footnote-11961117
+Node: User GC1961387
+Node: GGC Roots1965126
+Node: Files1965839
+Node: Invoking the garbage collector1968467
+Node: Troubleshooting1970109
+Node: Plugins1971184
+Node: Plugins loading1972313
+Node: Plugin API1973412
+Node: Plugins pass1981279
+Node: Plugins GC1983250
+Node: Plugins description1984967
+Node: Plugins attr1985503
+Node: Plugins recording1987783
+Node: Plugins gate1988633
+Node: Plugins tracking1989224
+Node: Plugins building1989812
+Node: LTO1993313
+Node: LTO Overview1994185
+Node: LTO object file layout1999937
+Node: IPA2004567
+Node: WHOPR2013617
+Node: Internal flags2018177
+Node: Match and Simplify2019588
+Node: GIMPLE API2020550
+Node: The Language2023345
+Node: Static Analyzer2035844
+Node: Analyzer Internals2036109
+Node: Debugging the Analyzer2051996
+Node: User Experience Guidelines2054916
+Node: Guidelines for Diagnostics2055852
+Ref: input_location_example2064027
+Node: Guidelines for Options2073712
+Node: Funding2073889
+Node: GNU Project2076396
+Node: Copying2077045
+Node: GNU Free Documentation License2114556
+Node: Contributors2139677
+Node: Option Index2180653
+Node: Concept Index2181530
 
 End Tag Table
 
